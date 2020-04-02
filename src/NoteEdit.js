@@ -30,7 +30,8 @@ class NoteEdit extends Component {
         deleted: false
       };
 
-    componentWillMount() {
+    constructor(props) {
+        super(props);
         _.each(this.props.note, (value, prop) => {
             this.props.editNote({ prop, value });
         });

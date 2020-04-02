@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './LoginForm';
 import NotesList from './NotesList';
+import { logout } from './actions';
 import CreateNote from './CreateNote';
 import NoteEdit from './NoteEdit';
 
@@ -17,7 +18,9 @@ class RouterComponent extends Component {
                     <Scene key="main">
                         <Scene
                             rightTitle="Add"
+                            leftTitle="Logout"
                             onRight={() => Actions.noteCreate()}
+                            onLeft={() => logout()}
                             key="notes" component={NotesList} title="Minhas Anotações"
                             initial
                         />

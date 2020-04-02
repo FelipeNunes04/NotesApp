@@ -13,22 +13,22 @@ export const emailChanged = (email) => {
     return {
         type: EMAIL_CHANGED,
         payload: email
-    };
-};
+    }
+}
 
 export const changeUser = (user) => {
     return {
         type: USER_CHANGED,
         payload: user
-    };
-};
+    }
+}
 
 export const passwordChanged =  (password) => {
     return {
         type: PASSWORD_CHANGED,
         payload: password
-    };
-};
+    }
+}
 
 export const loginUser = ({email, password}) => {
     return (dispatch) => {
@@ -41,12 +41,18 @@ export const loginUser = ({email, password}) => {
         .then(user => loginUserSucess(dispatch, user))
         .catch(() => loginUserFail(dispatch));
         });
-    };
-};
+    }
+}
+
+export const logout = () => {
+    firebase.auth().signOut();
+    changeUser(null);
+    Actions.reset('auth');
+}
 
 const loginUserFail = (dispatch) => {
     dispatch({ type: LOGIN_USER_FAIL });
-};
+}
 
 const loginUserSucess = (dispatch, user ) => {
     dispatch({
@@ -55,4 +61,4 @@ const loginUserSucess = (dispatch, user ) => {
     });
 
     Actions.reset('main');
-};
+}
