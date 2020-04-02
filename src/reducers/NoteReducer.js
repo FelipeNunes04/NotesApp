@@ -1,13 +1,13 @@
-const INITIAL_STATE = { notes: {} , 
+const INITIAL_STATE = { notes: [] , 
                         id: null, 
                         lastEdit: null,
-                        title: ' ', 
-                        body: ' ', 
+                        title: '', 
+                        body: '', 
                         loading: false, 
                         error: ''
                                 };
 
-import {    FETCH_NOTES, NOTES_FETCH_SUCCESS, NOTE_CREATE, NOTE_UPDATE, 
+import {    FETCH_NOTES, NOTES_FETCH_SUCCESS, NOTE_CREATE, NOTE_UPDATE, NOTE_CLEAR,
             NOTE_EDIT, SAVE_NOTE, DELETE_NOTE, DELETE_NOTE_SUCCESS } from '../actions/types';
 
 export default AuthReducer = (state = INITIAL_STATE, action) => {
@@ -18,6 +18,8 @@ export default AuthReducer = (state = INITIAL_STATE, action) => {
             return { notes: action.payload, loading: false };
         case NOTE_UPDATE:
             return { ...state, ...INITIAL_STATE, loading: false };
+        case NOTE_CLEAR:
+            return { ...state, title: '', body: '', loading: false };
         case NOTE_EDIT:
             return { ...state, [action.payload.prop]: action.payload.value };
         case NOTE_CREATE:

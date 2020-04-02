@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Button } from 'react-native';
 import { connect } from 'react-redux';
-import { createNote, updateNote } from './actions';
+import { createNote, clearForm } from './actions';
 import { Spinner } from './common/index';
 import NoteForm from './NoteForm';
 
@@ -12,6 +12,12 @@ const styles = StyleSheet.create({
 });
 
 class CreateNote extends Component {
+
+
+    constructor(props) {
+        super(props);
+        this.props.clearForm();
+    }
 
     renderButton() {
         if (this.props.loading) {
@@ -45,4 +51,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { createNote, updateNote }) (CreateNote);
+export default connect(mapStateToProps, { createNote, clearForm }) (CreateNote);

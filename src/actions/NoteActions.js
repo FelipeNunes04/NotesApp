@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import { FETCH_NOTES, NOTES_FETCH_SUCCESS, NOTE_CREATE, NOTE_UPDATE, NOTE_EDIT, 
-    SAVE_NOTE, SELECT_NOTE, DELETE_NOTE, DELETE_NOTE_SUCCESS } from './types';
+    SAVE_NOTE, SELECT_NOTE, DELETE_NOTE, DELETE_NOTE_SUCCESS, NOTE_CLEAR } from './types';
 
 export const fetchNotes = () => {
     const { currentUser } = firebase.auth();
@@ -28,8 +28,13 @@ export const editNote = ({ prop, value }) => {
     };
 };
 
+export const clearForm = () => {
+    return (dispatch) => {
+        dispatch({ type: NOTE_CLEAR });
+    };
+}
+
 export const updateNote = (note, props) => {
-    console.log(note)
     const { currentUser } = firebase.auth();
     const { title, body, id } = note;
     const lastEdit = new Date().toLocaleString();
@@ -87,6 +92,5 @@ export const selectNote = ({ id }) => {
         payload: id 
     };
 
-    Actions.noteCreate();
 };
 

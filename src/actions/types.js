@@ -11,6 +11,7 @@ export const FETCH_NOTES = 'fetch_notes';
 export const NOTES_FETCH_SUCCESS = 'note_fetch_success';
 export const NOTE_CREATE = 'note_create';
 export const NOTE_UPDATE = 'note_update';
+export const NOTE_CLEAR = 'note_clear';
 export const NOTE_EDIT = 'note_edit';
 export const SAVE_NOTE = 'save_note';
 export const SELECT_NOTE = 'select-note';
